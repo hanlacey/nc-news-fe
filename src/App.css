@@ -15,12 +15,12 @@
 }
 
 .ArticleList {
+  margin: 0;
   border: 2px orange solid;
 }
 
 .ArticleCard {
   border: 2px rgb(223, 186, 223) solid;
-  justify-content: space-between;
 }
 
 .TopicSelector {
@@ -34,4 +34,8 @@
   background-color: rgb(240, 233, 223);
   padding: 0.2rem;
   margin: 1rem;
+}
+
+ul {
+  padding-inline-start: 0;
 }
