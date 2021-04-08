@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import CommentPoster from "./CommentPoster";
 
 class ArticlePage extends Component {
   state = { article: {}, comments: [], isLoading: true };
 
   componentDidMount() {
-    api.fetchArticleById(this.props.article_id).then((article) => {
-      this.setState({ article });
-    });
-    api.fetchArticleComments(this.props.article_id).then((comments) => {
-      this.setState({ comments });
+    const { article_id } = this.props;
+    Promise.all([
+      api.fetchArticleById(article_id),
+      api.fetchArticleComments(article_id),
+    ]).then(([article, comments]) => {
+      this.setState({ article, comments, isLoading: false });
     });
   }
 
@@ -24,6 +26,7 @@ class ArticlePage extends Component {
       topic,
       votes,
     } = article;
+    const { article_id } = this.props;
     return (
       <div className="ArticlePage">
         <section className="article-content">
@@ -36,6 +39,7 @@ class ArticlePage extends Component {
           <p>{body}</p>
         </section>
         <ul className="article-comments-container">
+          <CommentPoster article_id={article_id} />
           <h4>{comment_count} comments</h4>
           {comments.map((comment) => {
             return (

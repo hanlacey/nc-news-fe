@@ -40,7 +40,7 @@ class ArticleList extends Component {
     const { articles, isLoading } = this.state;
     return (
       <div className="ArticleList-container">
-        <p>Sorting by:</p>
+        <p>Sort by:</p>
         <button
           onClick={() => {
             this.setSortBy("votes");
