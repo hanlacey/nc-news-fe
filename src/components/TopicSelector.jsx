@@ -9,6 +9,7 @@ class TopicSelector extends Component {
     topics: [],
     isLoading: true,
   };
+
   componentDidMount() {
     fetchTopics().then((topics) => {
       this.setState({ topics, isLoading: false });

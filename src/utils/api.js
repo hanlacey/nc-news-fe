@@ -4,8 +4,24 @@ const request = axios.create({
     baseURL: "https://hannah-nc-news.herokuapp.com/api"
 })
 
-export const fetchArticles = () => {
-    return request.get("/articles").then(({ data }) => {
+const buildArticlesQuery = (sort_by, topic) => {
+    let query = '';
+    if (topic || sort_by) {
+        const topicQuery = topic ? `topic=${topic}` : '';
+        const sort_byQuery = sort_by ? `sort_by=${sort_by}` : '';
+        const queries = [topicQuery, sort_byQuery];
+
+        const noEmptyQueries = queries.filter(query => query !== '');
+
+        const joinedQueries = noEmptyQueries.join('&');
+        query += `?${joinedQueries}`;
+    }
+    return query;
+}
+
+export const fetchArticles = (sort_by, topic) => {
+    const query = buildArticlesQuery(sort_by, topic)
+    return request.get(`/articles${query}`).then(({ data }) => {
         return data.articles
     })
 }
@@ -16,8 +32,8 @@ export const fetchTopics = () => {
     })
 }
 
-export const fetchArticlesByTopic = (topic) => {
-    return request.get(`/articles/?topic=${topic}`).then(({ data }) => {
+export const fetchArticlesByTopic = (topic, sort_by) => {
+    return request.get(`/articles/?topic=${topic}&sort_by=${sort_by}`).then(({ data }) => {
         return data.articles
     })
 }

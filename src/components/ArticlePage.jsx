@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { fetchArticleById, fetchArticleComments } from "../utils/api";
+import * as api from "../utils/api";
 
 class ArticlePage extends Component {
   state = { article: {}, comments: [], isLoading: true };
 
   componentDidMount() {
-    fetchArticleById(this.props.article_id).then((article) => {
+    api.fetchArticleById(this.props.article_id).then((article) => {
       this.setState({ article });
     });
-    fetchArticleComments(this.props.article_id).then((comments) => {
+    api.fetchArticleComments(this.props.article_id).then((comments) => {
       this.setState({ comments });
     });
   }
+
   render() {
     const { article, comments } = this.state;
     const {
@@ -33,9 +34,9 @@ class ArticlePage extends Component {
           </h4>
           <h4>{votes} votes</h4>
           <p>{body}</p>
-          <h4>{comment_count} comments</h4>
         </section>
         <ul className="article-comments-container">
+          <h4>{comment_count} comments</h4>
           {comments.map((comment) => {
             return (
               <div id="comment-card">
@@ -54,5 +55,3 @@ class ArticlePage extends Component {
 }
 
 export default ArticlePage;
-
-//sort by

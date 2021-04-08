@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchArticles, fetchArticlesByTopic } from "../utils/api";
+import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
 class ArticleList extends Component {
@@ -7,35 +7,62 @@ class ArticleList extends Component {
     articles: [],
     isLoading: true,
     topic: "",
+    sort_by: "votes",
+  };
+
+  setSortBy = (new_sort_by) => {
+    this.setState({ sort_by: new_sort_by });
+  };
+
+  getArticles = () => {
+    const { sort_by } = this.state;
+    const { topic } = this.props;
+
+    api.fetchArticles(sort_by, topic).then((articles) => {
+      this.setState({ articles, isLoading: false });
+    });
   };
 
   componentDidMount() {
-    const topic = this.props.topic;
-
-    if (topic) {
-      fetchArticlesByTopic(topic).then((articles) => {
-        this.setState({ articles, isLoading: false, topic });
-      });
-    } else {
-      fetchArticles().then((articles) => {
-        this.setState({ articles, isLoading: false });
-      });
-    }
+    this.getArticles();
   }
 
-  componentDidUpdate() {
-    const topic = this.props.topic;
-    fetchArticlesByTopic(topic).then((articles) => {
-      if (topic && this.state.topic !== topic) {
-        this.setState({ articles, isLoading: false, topic });
-      }
-    });
+  componentDidUpdate(prevProps, prevState) {
+    const { topic } = this.props;
+    const { sort_by } = this.state;
+
+    if (topic !== prevProps.topic || sort_by !== prevState.sort_by) {
+      this.getArticles();
+    }
   }
 
   render() {
     const { articles, isLoading } = this.state;
     return (
       <div className="ArticleList-container">
+        <p>Sorting by:</p>
+        <button
+          onClick={() => {
+            this.setSortBy("votes");
+          }}
+        >
+          Votes
+        </button>
+        <button
+          onClick={() => {
+            this.setSortBy("created_at");
+          }}
+        >
+          Date
+        </button>
+        <button
+          onClick={() => {
+            this.setSortBy("comment_count");
+          }}
+        >
+          Comment count
+        </button>
+
         <ul className="ArticleList ">
           {isLoading ? (
             <p>Loading...</p>
