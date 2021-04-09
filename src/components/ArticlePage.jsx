@@ -35,6 +35,7 @@ class ArticlePage extends Component {
       votes,
     } = article;
     const { article_id } = this.props;
+
     return (
       <div className="ArticlePage">
         <section className="article-content">
@@ -60,6 +61,11 @@ class ArticlePage extends Component {
                 </p>
                 <p>{comment.body}</p>
                 <p>{comment.votes} votes</p>
+                {comment.author === "jessjelly" ? (
+                  <button>Delete comment</button>
+                ) : (
+                  ""
+                )}
               </div>
             );
           })}
