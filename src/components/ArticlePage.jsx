@@ -23,6 +23,12 @@ class ArticlePage extends Component {
     });
   };
 
+  deleteComment = (comment_id) => {
+    api.deleteComment(comment_id).then(() => {
+      console.log("deleted?");
+    });
+  };
+
   render() {
     const { article, comments } = this.state;
     const {
@@ -54,15 +60,22 @@ class ArticlePage extends Component {
           />
           <h4>{comment_count} comments</h4>
           {comments.map((comment) => {
+            const { author, comment_id, body, created_at, votes } = comment;
             return (
               <div id="comment-card">
                 <p>
-                  {comment.author} at {comment.created_at}:
+                  {author} at {created_at}:
                 </p>
-                <p>{comment.body}</p>
-                <p>{comment.votes} votes</p>
-                {comment.author === "jessjelly" ? (
-                  <button>Delete comment</button>
+                <p>{body}</p>
+                <p>{votes} votes</p>
+                {author === "jessjelly" ? (
+                  <button
+                    onClick={() => {
+                      this.deleteComment(comment_id);
+                    }}
+                  >
+                    Delete comment
+                  </button>
                 ) : (
                   ""
                 )}

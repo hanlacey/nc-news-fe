@@ -56,3 +56,9 @@ export const postCommentToArticle = (article_id, comment) => {
         return data.posted_comment
     })
 }
+
+export const deleteComment = (comment_id) => {
+    return request.delete(`/comments/${comment_id}`).then(({ data }) => {
+        console.log(data)
+    })
+}
