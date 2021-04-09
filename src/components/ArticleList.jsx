@@ -36,6 +36,12 @@ class ArticleList extends Component {
     }
   }
 
+  updateArticleVotes = (article_id) => {
+    api.patchArticleVotes(article_id).then((newVoteCount) => {
+      this.setState({ article: { votes: newVoteCount } });
+    });
+  };
+
   render() {
     const { articles, isLoading } = this.state;
     return (
@@ -89,6 +95,7 @@ class ArticleList extends Component {
                   created_at={created_at}
                   votes={votes}
                   comment_count={comment_count}
+                  updateArticleVotes={this.updateArticleVotes}
                 />
               );
             })

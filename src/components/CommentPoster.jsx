@@ -12,10 +12,8 @@ class CommentPoster extends Component {
 
   submitComment = (event) => {
     event.preventDefault();
-
     const { article_id } = this.props;
     const newComment = { author: "jessjelly", body: this.state.comment };
-
     api.postCommentToArticle(article_id, newComment).then((postedComment) => {
       this.setState({ comment: "" });
       this.props.displayNewComment(postedComment);

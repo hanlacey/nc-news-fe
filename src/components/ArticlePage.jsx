@@ -35,10 +35,8 @@ class ArticlePage extends Component {
 
   deleteComment = (comment_id) => {
     api.deleteComment(comment_id).then(() => {
-      api.fetchArticleComments(this.props.article_id).then((comments) => {
-        this.setState({ comments });
-        this.getArticle(this.state.article.article_id);
-      });
+      this.getComments(this.props.article_id);
+      this.getArticle(this.state.article.article_id);
     });
   };
 

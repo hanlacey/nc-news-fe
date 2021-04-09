@@ -51,7 +51,6 @@ export const fetchArticleComments = (article_id) => {
 }
 
 export const postCommentToArticle = (article_id, comment) => {
-    console.log(comment)
     return request.post(`articles/${article_id}/comments`, comment).then(({ data }) => {
         return data.posted_comment
     })
@@ -59,4 +58,11 @@ export const postCommentToArticle = (article_id, comment) => {
 
 export const deleteComment = (comment_id) => {
     return request.delete(`/comments/${comment_id}`)
+}
+
+export const patchArticleVotes = (article_id, vote) => {
+    return request.patch(`/articles/${article_id}`, { inc_votes: vote }).then(({ data }) => {
+        console.log(data)
+        return data.updatedArticle.votes
+    })
 }

@@ -12,13 +12,24 @@ const ArticleCard = (props) => {
     comment_count,
   } = props;
 
+  const { updateArticleVotes } = props;
   return (
     <div className="ArticleCard">
       <h4>
         {" "}
         <Link to={`/article/${article_id}`}>{title} comments</Link>
       </h4>
-      <p>{votes} votes</p>
+      <p>
+        <button
+          onClick={() => {
+            updateArticleVotes(article_id);
+          }}
+        >
+          +
+        </button>
+        {votes} votes
+        <button>-</button>
+      </p>
       <p>
         posted by {author} in {topic}
       </p>
