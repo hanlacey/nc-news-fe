@@ -25,7 +25,9 @@ class ArticlePage extends Component {
 
   deleteComment = (comment_id) => {
     api.deleteComment(comment_id).then(() => {
-      console.log("deleted?");
+      api.fetchArticleComments(this.props.article_id).then((comments) => {
+        this.setState({ comments });
+      });
     });
   };
 
