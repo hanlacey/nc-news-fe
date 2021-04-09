@@ -7,26 +7,37 @@ class ArticlePage extends Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    Promise.all([
-      api.fetchArticleById(article_id),
-      api.fetchArticleComments(article_id),
-    ]).then(([article, comments]) => {
-      this.setState({ article, comments, isLoading: false });
-    });
+    this.getArticle(article_id);
+    this.getComments(article_id);
+    this.setState({ isLoading: false });
   }
 
-  updateComments = (newComment) => {
+  getArticle = (article_id) => {
+    api.fetchArticleById(article_id).then((article) => {
+      this.setState({ article });
+    });
+  };
+
+  getComments = (article_id) => {
+    api.fetchArticleComments(article_id).then((comments) => {
+      this.setState({ comments });
+    });
+  };
+
+  displayNewComment = (newComment) => {
     this.setState((currState) => {
       return {
         comments: [newComment, ...currState.comments],
       };
     });
+    this.getArticle(this.state.article.article_id);
   };
 
   deleteComment = (comment_id) => {
     api.deleteComment(comment_id).then(() => {
       api.fetchArticleComments(this.props.article_id).then((comments) => {
         this.setState({ comments });
+        this.getArticle(this.state.article.article_id);
       });
     });
   };
@@ -57,7 +68,7 @@ class ArticlePage extends Component {
         </section>
         <ul className="article-comments-container">
           <CommentPoster
-            updateComments={this.updateComments}
+            displayNewComment={this.displayNewComment}
             article_id={article_id}
           />
           <h4>{comment_count} comments</h4>

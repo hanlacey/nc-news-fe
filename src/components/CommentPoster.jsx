@@ -18,7 +18,7 @@ class CommentPoster extends Component {
 
     api.postCommentToArticle(article_id, newComment).then((postedComment) => {
       this.setState({ comment: "" });
-      this.props.updateComments(postedComment);
+      this.props.displayNewComment(postedComment);
     });
   };
 
