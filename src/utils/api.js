@@ -62,7 +62,6 @@ export const deleteComment = (comment_id) => {
 
 export const patchArticleVotes = (article_id, vote) => {
     return request.patch(`/articles/${article_id}`, { inc_votes: vote }).then(({ data }) => {
-        console.log(data)
         return data.updatedArticle.votes
     })
 }
