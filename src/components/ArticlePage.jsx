@@ -15,6 +15,14 @@ class ArticlePage extends Component {
     });
   }
 
+  updateComments = (newComment) => {
+    this.setState((currState) => {
+      return {
+        comments: [newComment, ...currState.comments],
+      };
+    });
+  };
+
   render() {
     const { article, comments } = this.state;
     const {
@@ -39,7 +47,10 @@ class ArticlePage extends Component {
           <p>{body}</p>
         </section>
         <ul className="article-comments-container">
-          <CommentPoster article_id={article_id} />
+          <CommentPoster
+            updateComments={this.updateComments}
+            article_id={article_id}
+          />
           <h4>{comment_count} comments</h4>
           {comments.map((comment) => {
             return (
