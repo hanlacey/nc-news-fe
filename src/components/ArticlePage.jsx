@@ -15,7 +15,6 @@ class ArticlePage extends Component {
   getArticle = (article_id) => {
     api.fetchArticleById(article_id).then((article) => {
       this.setState({ article });
-      console.log("articles");
     });
   };
 
@@ -53,7 +52,6 @@ class ArticlePage extends Component {
       votes,
     } = article;
     const { article_id } = this.props;
-
     if (isLoading) {
       return <p>Loading...</p>;
     } else {
@@ -66,9 +64,9 @@ class ArticlePage extends Component {
               Posted by {author} on {created_at} to {topic}
             </h4>
             <p>{body}</p>
-            <Voter article_id={article_id} votes={votes} element="article" />
+            <Voter id={article_id} votes={votes} element="article" />
           </section>
-          <ul className="article-comments-container">
+          <div className="article-comments-container">
             <CommentPoster
               displayNewComment={this.displayNewComment}
               article_id={article_id}
@@ -77,7 +75,7 @@ class ArticlePage extends Component {
             {comments.map((comment) => {
               const { author, comment_id, body, created_at, votes } = comment;
               return (
-                <div id="comment-card">
+                <div id="comment-card" key={comment_id}>
                   <p>
                     {author} at {created_at}:
                   </p>
@@ -97,7 +95,7 @@ class ArticlePage extends Component {
                 </div>
               );
             })}
-          </ul>
+          </div>
         </div>
       );
     }
