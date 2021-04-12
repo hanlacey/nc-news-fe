@@ -52,7 +52,7 @@ export const fetchArticleComments = (article_id) => {
 
 export const postCommentToArticle = (article_id, comment) => {
     return request.post(`articles/${article_id}/comments`, comment).then(({ data }) => {
-        return data.posted_comment
+        return data.comment
     })
 }
 

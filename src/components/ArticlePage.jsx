@@ -42,7 +42,7 @@ class ArticlePage extends Component {
   };
 
   render() {
-    const { article, comments } = this.state;
+    const { article, comments, isLoading } = this.state;
     const {
       author,
       body,

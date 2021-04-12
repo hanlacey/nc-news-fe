@@ -23,9 +23,12 @@ class TopicSelector extends Component {
         <ButtonGroup>
           {topics.map(({ slug }) => {
             return (
-              <Link key={slug} to={`/articles/${slug}`}>
-                <Button id={slug}>{slug}</Button>
-              </Link>
+              <Button id={slug}>
+                {" "}
+                <Link key={slug} to={`/articles/${slug}`}>
+                  {slug}{" "}
+                </Link>
+              </Button>
               //swap link/button
             );
           })}
