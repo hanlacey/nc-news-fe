@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import CommentPoster from "./CommentPoster";
+import Voter from "./Voter";
 
 class ArticlePage extends Component {
   state = { article: {}, comments: [], isLoading: true };
@@ -61,8 +62,8 @@ class ArticlePage extends Component {
           <h4>
             Posted by {author} on {created_at} to {topic}
           </h4>
-          <h4>{votes} votes</h4>
           <p>{body}</p>
+          <Voter article_id={article_id} votes={votes} />
         </section>
         <ul className="article-comments-container">
           <CommentPoster

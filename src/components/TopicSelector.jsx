@@ -26,6 +26,7 @@ class TopicSelector extends Component {
               <Link key={slug} to={`/articles/${slug}`}>
                 <Button id={slug}>{slug}</Button>
               </Link>
+              //swap link/button
             );
           })}
         </ButtonGroup>
