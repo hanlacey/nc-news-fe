@@ -19,7 +19,7 @@ const ArticleCard = (props) => {
         {" "}
         <Link to={`/article/${article_id}`}>{title} comments</Link>
       </h4>
-      <Voter article_id={article_id} votes={votes} />
+      <Voter id={article_id} votes={votes} element={"article"} />
       <p>
         posted by {author} in {topic}
       </p>
