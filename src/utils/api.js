@@ -60,7 +60,6 @@ export const deleteComment = (comment_id) => {
     return request.delete(`/comments/${comment_id}`)
 }
 
-
 export const patchVotes = (id, vote, element) => {
     return request.patch(`/${element}s/${id}`, { inc_votes: vote }).then(({ data }) => {
         return data[element].votes

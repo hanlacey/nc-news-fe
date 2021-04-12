@@ -63,7 +63,7 @@ class ArticlePage extends Component {
             Posted by {author} on {created_at} to {topic}
           </h4>
           <p>{body}</p>
-          <Voter article_id={article_id} votes={votes} />
+          <Voter article_id={article_id} votes={votes} element="article" />
         </section>
         <ul className="article-comments-container">
           <CommentPoster
@@ -79,7 +79,7 @@ class ArticlePage extends Component {
                   {author} at {created_at}:
                 </p>
                 <p>{body}</p>
-                <p>{votes} votes</p>
+                <Voter id={comment_id} votes={votes} element="comment" />{" "}
                 {author === "jessjelly" ? (
                   <button
                     onClick={() => {
