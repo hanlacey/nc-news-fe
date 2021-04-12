@@ -2,32 +2,73 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  font-family: "Mark Pro Regular";
+  font-weight: bold;
 }
 
 .Header {
   background-color: #e22c13;
   color: rgb(255, 255, 255);
   font-size: 2rem;
+  padding: 2rem 2rem 1rem;
 }
 
 .Navbar {
-  border: 5px rgb(255, 0, 221) solid;
+  background-color: #e22c13;
 }
-
-.ArticleList {
-  margin: 0;
-  border: 2px orange solid;
-}
-
-.ArticleCard {
-  border: 2px rgb(223, 186, 223) solid;
-}
-
 .TopicSelector {
-  border: 2px green solid;
+  background-color: #e22c13;
+  padding-bottom: 0.25rem;
 }
-.article-content {
-  background-color: rgb(212, 205, 212);
+.TopicSelector button {
+  background-color: inherit;
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.75rem 1.5rem 0.75rem;
+  border: 1px white solid;
+  margin: 0.5rem;
+}
+.TopicSelector button a {
+  color: white;
+}
+.ArticleCard {
+  background-color: white;
+  border: 3px #e22c13 solid;
+  margin: 2rem;
+}
+.ArticleCard h4 {
+  background-color: #e22c13;
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  width: inherit;
+}
+.Voter {
+  background-color: #e22c13;
+  padding: 0.5rem;
+  color: white;
+}
+.Voter button {
+  background-color: white;
+  border: none;
+  border-radius: 20%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+#SortBy {
+  color: #e22c13;
+  background-color: rgb(247, 241, 233);
+  padding: 0.5rem;
+}
+#SortBy button {
+  background-color: inherit;
+
+  color: #e22c13;
+  margin: 0.2rem;
+  font-size: inherit;
+  border: none;
 }
 
 #comment-card {
@@ -35,7 +76,9 @@
   padding: 0.2rem;
   margin: 1rem;
 }
-
+a {
+  text-decoration: none;
+}
 ul {
   padding-inline-start: 0;
 }

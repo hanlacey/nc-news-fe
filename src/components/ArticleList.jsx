@@ -39,31 +39,32 @@ class ArticleList extends Component {
   render() {
     const { articles, isLoading } = this.state;
     return (
-      <div className="ArticleList-container">
-        <p>Sort by:</p>
-        <button
-          onClick={() => {
-            this.setSortBy("votes");
-          }}
-        >
-          Votes
-        </button>
-        <button
-          onClick={() => {
-            this.setSortBy("created_at");
-          }}
-        >
-          Date
-        </button>
-        <button
-          onClick={() => {
-            this.setSortBy("comment_count");
-          }}
-        >
-          Comment count
-        </button>
-
-        <ul className="ArticleList ">
+      <div className="ArticleList-page">
+        <div id="SortBy">
+          Sort by:{" "}
+          <button
+            onClick={() => {
+              this.setSortBy("votes");
+            }}
+          >
+            Votes
+          </button>
+          <button
+            onClick={() => {
+              this.setSortBy("created_at");
+            }}
+          >
+            Date
+          </button>
+          <button
+            onClick={() => {
+              this.setSortBy("comment_count");
+            }}
+          >
+            Comment count
+          </button>
+        </div>
+        <ul className="ArticleList-list ">
           {isLoading ? (
             <p>Loading...</p>
           ) : (
