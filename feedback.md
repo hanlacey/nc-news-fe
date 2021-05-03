@@ -18,11 +18,11 @@ Overall the react principles you've shown are solid and you are managing state a
 
 ## UX
 
-- [ ] Basic styling added
+- [x] Basic styling added
 - [x] Responsive design
 - [x] Items aligned
 - [x] Content legible (not too wide, obstructed, etc)
-- [ ] Refreshing doesn’t cause an issue on sub-pages
+- [x] Refreshing doesn’t cause an issue on sub-pages
 - [x] No errors in the console
 
 You have a couple of warnings in the console about your button group. The button group relies on having the buttons themselves as it's children whereas your's are links. Wrap the text of your buttons in the Link instead of the whole button and this should clear it up :D
@@ -93,6 +93,6 @@ In your ArticlePage you can return null from a ternary to not render anything or
 - [x] Tidy? If not: ESLint / Prettier
 - [x] `node_modules` git ignored
 - [x] No `console.log`s / comments
-- [ ] remove unnecessary files (e.g. App.test.js)
+- [x] remove unnecessary files (e.g. App.test.js)
 
 ## MAKE SURE ALL TESTS ARE STILL PASSING IN BACK END

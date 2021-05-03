@@ -65,3 +65,7 @@ export const patchVotes = (id, vote, element) => {
         return data[element].votes
     })
 }
+
+export const fetchUserByUsername = (username) => {
+    return request.get(`/users/${username}`)
+}
