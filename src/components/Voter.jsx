@@ -6,23 +6,27 @@ class Voter extends Component {
 		voteChanges: 0,
 	};
 
-	updateVotes = (id, vote, element) => {
+	updateVotes = (element_id, vote, element) => {
 		this.setState((currentState) => {
 			return {
 				voteChanges: currentState.voteChanges + vote,
 			};
 		});
-		api.patchVotes(id, vote, element);
+		api.patchVotes(element_id, vote, element);
 	};
 
 	render() {
-		const { id, votes, element } = this.props;
+		const { element_id, votes, element } = this.props;
 		const { voteChanges } = this.state;
 		return (
 			<div className="Voter">
-				<button onClick={() => this.updateVotes(id, -1, element)}>-</button>
+				<button onClick={() => this.updateVotes(element_id, -1, element)}>
+					-
+				</button>
 				{votes + voteChanges} votes
-				<button onClick={() => this.updateVotes(id, 1, element)}>+</button>
+				<button onClick={() => this.updateVotes(element_id, 1, element)}>
+					+
+				</button>
 			</div>
 		);
 	}

@@ -15,10 +15,14 @@ const ArticleCard = (props) => {
 
 	return (
 		<div className="ArticleCard">
-			<h4>
-				<Link to={`/article/${article_id}`}>{title}</Link>
-			</h4>
-			<Voter id={article_id} votes={votes} element={"article"} />
+			<Link to={`/article/${article_id}`}>
+				{" "}
+				<h4>{title} </h4>
+			</Link>
+			<div id="home">
+				<Voter element_id={article_id} votes={votes} element={"article"} />
+			</div>
+
 			<div className="ArticleCardBody">
 				<p>
 					posted by{" "}

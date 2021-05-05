@@ -67,5 +67,13 @@ export const patchVotes = (id, vote, element) => {
 }
 
 export const fetchUserByUsername = (username) => {
-    return request.get(`/users/${username}`)
+    return request.get(`/users/${username}`).then(({ data }) => {
+        return data.user
+    })
+}
+
+export const fetchArticlesByUsername = (username) => {
+    return request.get(`/articles?author=${username}`).then(({ data }) => {
+        return data.articles
+    })
 }
