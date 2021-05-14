@@ -1,85 +1,254 @@
+:root {
+	--nc-red: #e74514;
+	--text: rgb(68, 68, 68);
+	--shadow: rgb(189, 189, 189);
+	--light-accent: #f3f3f3;
+	--dark-accent: #ebe7e7;
+}
+
 .App {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-family: "Mark Pro Regular";
-  font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: "Mark Pro Regular";
+	font-weight: bold;
+	align-content: center;
+	justify-content: center;
 }
 
 .Header {
-  background-color: #e22c13;
-  color: rgb(255, 255, 255);
-  font-size: 2rem;
-  padding: 2rem 2rem 1rem;
+	color: var(--nc-red);
+	font-size: 2.7rem;
+	padding: 0.75rem;
+	padding-top: 1rem;
 }
 
 .Navbar {
-  background-color: #e22c13;
+	display: flex;
+	flex-direction: row;
+	padding: 1rem;
+	font-weight: normal;
+	justify-content: space-evenly;
 }
-.TopicSelector {
-  background-color: #e22c13;
-  padding-bottom: 0.25rem;
+
+.Navbar p {
+	padding: 0rem;
+	margin: 0rem;
+	font-size: 11pt;
 }
-.TopicSelector button {
-  background-color: inherit;
-  color: white;
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0.75rem 1.5rem 0.75rem;
-  border: 1px white solid;
-  margin: 0.5rem;
+
+.Navbar #profile {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
-.TopicSelector button a {
-  color: white;
+.Navbar #profile p {
+	margin-right: 0.25rem;
 }
+
 .ArticleCard {
-  background-color: white;
-  border: 3px #e22c13 solid;
-  margin: 2rem;
+	background-color: white;
+	margin-bottom: 2rem;
+	color: var(--text);
+	box-shadow: 0 0 10px var(--dark-accent);
 }
+
 .ArticleCard h4 {
-  background-color: #e22c13;
-  width: 100%;
-  padding: 1rem;
-  margin: 0;
-  width: inherit;
+	background-color: var(--dark-accent);
+	color: var(--text);
+	width: 100%;
+	padding: 0.65rem;
+	margin: 0;
+	width: inherit;
+	box-shadow: ;
 }
+
+.ArticleCardBody {
+	background-color: var(--light-accent);
+	padding: 1rem;
+}
+
+.ArticleCard h4 a {
+	color: var(--light-text);
+}
+
+.ArticleCard h4 a:visited {
+	color: var(--light-accent);
+}
+
+.ArticleCard h4:hover {
+	background-color: #e22b13c7;
+	color: #ffffff;
+}
+
+.ArticleCard a:visited {
+	color: rgb(83, 83, 83);
+}
+
+.ArticleCard p {
+	margin: 0;
+	padding: 0.5rem;
+	padding-top: 0;
+	font-weight: lighter;
+}
+
+.FullArticle {
+	box-shadow: 0 0 10px var(--dark-accent);
+	margin: 1rem 0rem 0rem;
+	padding: 1rem;
+	font-weight: lighter;
+}
+
+.FullArticle #body {
+	font-weight: lighter;
+	text-align: left;
+	background-color: var(--light-accent);
+	/* overflow: hidden;
+	text-overflow: scroll;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical; */
+}
+
+.FullArticle #text-wrapper {
+	padding: 0.5rem 1rem 0.5rem;
+	background-color: var(--light-accent);
+}
+
+#article-page .Voter {
+	margin: 0rem 0rem 1rem;
+	background-color: var(--dark-accent);
+	padding: 1rem;
+	border: none;
+}
+
+.TopicSelector {
+	padding-bottom: 0.25rem;
+	width: 100%;
+	background-color: white;
+}
+
+.TopicSelector button {
+	background-color: var(--light-accent);
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	padding: 0.4rem 1.5rem 0.4rem;
+	margin: 0.5rem;
+	margin-top: 0.75rem;
+}
+
+.TopicSelector button a {
+	color: var(--text);
+}
+
 .Voter {
-  background-color: #e22c13;
-  padding: 0.5rem;
-  color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	background-color: var(--light-accent);
+	padding: 1.5rem 0rem 2rem;
+	color: var(--text);
+	font-weight: lighter;
+	margin: 3rem 0rem 3rem;
 }
+
 .Voter button {
-  background-color: white;
-  border: none;
-  border-radius: 20%;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-#SortBy {
-  color: #e22c13;
-  background-color: rgb(247, 241, 233);
-  padding: 0.5rem;
-}
-#SortBy button {
-  background-color: inherit;
-
-  color: #e22c13;
-  margin: 0.2rem;
-  font-size: inherit;
-  border: none;
+	border: 2px none var(--dark-accent);
+	margin-left: 1rem;
+	margin-right: 1rem;
+	padding: 0.15rem 0.75rem 0.15rem;
+	color: var(--text);
+	background-color: var(--dark-accent);
+	box-shadow: 0 0 3px var(--shadow);
+	border-radius: 100px;
 }
 
-#comment-card {
-  background-color: rgb(240, 233, 223);
-  padding: 0.2rem;
-  margin: 1rem;
+.Voter button:active {
+	box-shadow: 0 4px (--dark-accent);
+	transform: translateY(1px);
 }
-a {
-  text-decoration: none;
+
+.Voter button:hover {
+	background-color: #e0d6d6a9;
+}
+#home .Voter {
+	margin: 0rem;
+	padding-bottom: 0rem;
+}
+
+.SortBy {
+	color: var(--light-text);
+	background-color: white;
+	padding: 0.5rem 1rem 0.5rem;
+}
+
+.SortBy button {
+	background-color: inherit;
+	margin: 0.3rem;
+	padding: 0.2rem;
+	font-size: inherit;
+	border: none;
+	color: var(--text);
+	font-family: inherit;
+}
+
+.CommentCard {
+	padding: 1rem 0rem 0rem;
+
+	margin: 1rem 1rem 1rem;
+	background-color: var(--light-accent);
+}
+.CommentCard p {
+	padding: 0.5rem;
+}
+.CommentCard .Voter {
+	background-color: var(--dark-accent);
+	margin: 0rem;
+	padding: 1rem 0rem 1rem;
+}
+
+.CommentCard #yourComment {
+	background-color: var(--dark-accent);
+	padding-bottom: 0.75rem;
+}
+
+.UserProfile {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem;
+}
+.UserProfile #bio {
+	flex-wrap: nowrap;
+	flex-direction: row;
+}
+
+.UserProfile #article-wrapper {
+	background-color: var(--light-accent);
+	padding: 0.5rem;
+	margin: 0rem 0.5rem 1rem;
+}
+.UserProfile #user-article {
+	background-color: var(--light-accent);
+	font-weight: lighter;
+	overflow: hidden;
+	text-overflow: scroll;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }
 ul {
-  padding-inline-start: 0;
+	padding-inline-start: 0;
 }
+
+a {
+	text-decoration: none;
+	color: rgb(68, 68, 68);
+}
+img {
+	width: 20%;
+	height: 20%;
+}
+
 /* image formatting - object-fit */
